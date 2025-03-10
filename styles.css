@@ -2,9 +2,11 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
+  align-items: center;
 }
 .logo {
   width: 200px;
+  height: 90px;
 }
 .nav-items > ul {
   display: flex;
@@ -34,6 +36,29 @@
   width: 100%;
   height: 40%;
 }
-.filter-btn{
+.filter {
+  display: flex;
+  align-items: center;
+}
+.filter-btn {
   margin: 10px;
+}
+.shimmer-conatiner {
+  display: flex;
+  flex-wrap: wrap;
+}
+.shimmmer-item {
+  height: 300px;
+  width: 200px;
+  background-color: #f0f0f0;
+  margin: 10px;
+}
+.login-btn {
+  margin: 12px;
+  padding: 5px 10px;
+  width: 60px;
+  height: 30px;
+  border: none;
+  background-color: grey;
+  cursor: pointer;
 }
