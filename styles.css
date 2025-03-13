@@ -12,6 +12,10 @@
   display: flex;
   list-style: none;
 }
+.nav-items a {
+  text-decoration: none;
+  color: inherit;
+}
 .nav-items > ul > li {
   padding: 10px;
   margin: 10px;
@@ -27,6 +31,14 @@
   width: 200px;
   padding: 5px;
   margin: 5px;
+  height: 500px;
+}
+.res-card > h3,
+.res-card > h4 {
+  color: black;
+}
+a {
+  text-decoration: none;
 }
 .res-card:hover {
   border: 1px solid black;
