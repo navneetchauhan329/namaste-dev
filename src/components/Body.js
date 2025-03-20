@@ -20,16 +20,17 @@ const Body = () => {
         <Shimmer />
       ) : (
         <>
-          <div className="filter">
-            <div className="search">
+          <div className="flex ">
+            <div className="m-2 p-2 ">
               <input
+                className="border-solid-black border-2 rounded-lg"
                 type="text"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
               />
               <button
                 type="submit"
-                className="search-btn"
+                className="px-3 py-0.5 mx-3.5 bg-green-500 rounded-lg"
                 onClick={() => {
                   setFilRes((prev) =>
                     prev.filter((x) =>
@@ -41,28 +42,33 @@ const Body = () => {
                 Search
               </button>
             </div>
-            <button
-              className="filter-btn"
-              onClick={() => {
-                setFilRes((prev) => prev.filter((x) => x.info.avgRating > 4.5));
-              }}
-            >
-              Top Rated Restaurants
-            </button>
-            <button
-              className="filter-btn"
-              onClick={() => {
-                setFilRes(res);
-              }}
-            >
-              Reset
-            </button>
+            <div className="flex items-center">
+              <button
+                className="bg-gray-300 px-2 py-0.5 mx-2 rounded-lg"
+                onClick={() => {
+                  setFilRes((prev) =>
+                    prev.filter((x) => x.info.avgRating > 4.5)
+                  );
+                }}
+              >
+                Top Rated Restaurants
+              </button>
+              <button
+                className="bg-gray-300 px-2 py-0.5 mx-2 rounded-lg"
+                onClick={() => {
+                  setFilRes(res);
+                }}
+              >
+                Reset
+              </button>
+            </div>
           </div>
-          <div className="res-container">
+          <div className="flex flex-wrap mt-4">
             {filres.map((restaurantItems, index) => (
               <Link
                 key={restaurantItems.info.id}
                 to={"/restaurants/" + restaurantItems.info.id}
+                className="cursor-default"
               >
                 <RestaurantCard resData={restaurantItems} />
               </Link>

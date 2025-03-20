@@ -7,28 +7,30 @@ const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={COMPANY_LOGO} alt="img-logo" />
+    <div className="flex justify-between bg-gradient-to-r from-yellow-400 to-red-400 shadow-lg">
+      <div>
+        <img className="w-36 h-16" src={COMPANY_LOGO} alt="img-logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status : {onlineStatus === true ? "✅" : "🔴"}</li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 ">
+          <li className="px-4 hover:text-sky-900 font-bold">
+            Online Status : {onlineStatus === true ? "✅" : "🔴"}
+          </li>
+          <li className="px-4 hover:text-sky-900 font-bold">
             <Link to="/">Home </Link>
           </li>
-          <li>
+          <li className="px-4 hover:text-sky-900 font-bold">
             <Link to="/about">About Us </Link>
           </li>
-          <li>
+          <li className="px-4 hover:text-sky-900 font-bold">
             <Link to="/contactus">Contact Us </Link>
           </li>
-          <li>
+          <li className="px-4 hover:text-sky-900 font-bold">
             <Link to="/grocery">Grocery App</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4 hover:text-sky-900 font-bold ">Cart</li>
           <button
-            className="login-btn"
+            className="px-4 bg-sky-500 shadow-lg hover:bg-sky-700 text-white rounded-3xl"
             onClick={() =>
               setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")
             }
