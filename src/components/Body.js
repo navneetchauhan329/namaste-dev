@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscountLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -9,6 +9,7 @@ const Body = () => {
   const { res, filres, setFilRes } = useRestaurants();
   const [text, setText] = useState("");
   const onlineStatus = useOnlineStatus();
+  const RestaurantCardDiscounted = withDiscountLabel(RestaurantCard);
 
   if (onlineStatus === false) {
     return <p>Hey there! Looks like you are offline</p>;
@@ -20,7 +21,7 @@ const Body = () => {
         <Shimmer />
       ) : (
         <>
-          <div className="flex ">
+          <div className="flex m-8 ">
             <div className="m-2 p-2 ">
               <input
                 className="border-solid-black border-2 rounded-lg"
@@ -30,7 +31,7 @@ const Body = () => {
               />
               <button
                 type="submit"
-                className="px-3 py-0.5 mx-3.5 bg-green-500 rounded-lg"
+                className="px-3 py-0.5 mx-3.5 bg-orange-500 rounded-lg text-white"
                 onClick={() => {
                   setFilRes((prev) =>
                     prev.filter((x) =>
@@ -63,14 +64,18 @@ const Body = () => {
               </button>
             </div>
           </div>
-          <div className="flex flex-wrap mt-4">
+          <div className="flex flex-wrap mt-4 justify-center">
             {filres.map((restaurantItems, index) => (
               <Link
                 key={restaurantItems.info.id}
                 to={"/restaurants/" + restaurantItems.info.id}
                 className="cursor-default"
               >
-                <RestaurantCard resData={restaurantItems} />
+                {restaurantItems?.info?.aggregatedDiscountInfoV3 ? (
+                  <RestaurantCardDiscounted resData={restaurantItems} />
+                ) : (
+                  <RestaurantCard resData={restaurantItems} />
+                )}
               </Link>
             ))}
           </div>
